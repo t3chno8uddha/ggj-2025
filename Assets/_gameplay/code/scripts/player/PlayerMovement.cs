@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float mouseSensitivity = 2.0f;
-
+    [Header("Components")]
     CharacterController characterController;
-    Vector3 moveDirection;
+
+    [Header("Camera and Mouse")]
+    public float mouseSensitivity = 2.0f;
     float rotationX = 0;
 
-    [SerializeField] int statIndex = 0; 
+    [Header("Movement")]
+    [SerializeField] Vector3 moveDirection;
+
+    [Header("Stats")]
     [SerializeField] List<PlayerStats> stats = new List<PlayerStats>();
+    [SerializeField] int statIndex = 0;
+
+    float verticalVelocity;
+    bool isJumping;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        if (!characterController) { characterController = GetComponent<CharacterController>(); }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -23,18 +31,33 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Handle player movement
-        HandleMovementInput();
-
         // Handle player rotation
         HandleMouseLook();
 
         // Move the character
-        moveDirection.y += stats[statIndex].gravity;
-        characterController.Move(moveDirection * Time.deltaTime);
+        var moveDir = MoveDirection();
+        verticalVelocity -= stats[statIndex].gravity * Time.deltaTime;
+
+        // Handle gravity
+        if (characterController.isGrounded)
+        {
+            if (isJumping) { isJumping = false; }
+            if ( Input.GetKeyDown(KeyCode.Space)) { Jump(); }
+        }
+        else if (!isJumping)
+        {
+            verticalVelocity = 0;
+            isJumping = true;
+        }
+
+        moveDir.y = verticalVelocity;
+
+        // Move the character controller
+        characterController.Move(moveDir * Time.deltaTime);
+        
     }
 
-    void HandleMovementInput()
+    Vector3 MoveDirection()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -45,17 +68,20 @@ public class PlayerMovement : MonoBehaviour
         // Final movement direction
         Vector3 desiredMoveDirection = (moveHorizontal + moveVertical).normalized;
 
-        // Apply speed multiplier when running and there is stamina
+        // Apply speed multiplier when running
         float currentSpeed = stats[statIndex].movementSpeed;
         if (Input.GetKey(KeyCode.LeftShift)) { currentSpeed *= stats[statIndex].sprintMultiplier; }
 
-        // Makes the player jump
-        if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
-        {
-            moveDirection.y += Mathf.Sqrt(stats[statIndex].playerJumpHeight * -2.0f * stats[statIndex].gravity);
-        }
+        moveDirection.x = desiredMoveDirection.x * currentSpeed;
+        moveDirection.z = desiredMoveDirection.z * currentSpeed;
 
-        moveDirection = desiredMoveDirection * currentSpeed;
+        return moveDirection;
+    }
+
+    void Jump()
+    {
+        isJumping = true;
+        verticalVelocity = Mathf.Sqrt(stats[statIndex].playerJumpHeight * 2f * stats[statIndex].gravity);
     }
 
     void HandleMouseLook()
@@ -77,9 +103,9 @@ public class PlayerMovement : MonoBehaviour
 [Serializable]
 public class PlayerStats
 {
-    public int _health;
-    public float movementSpeed;
-    public float sprintMultiplier = 2.0f; // Speed multiplier when running
-    public float playerJumpHeight;
-    public float gravity = 9.8f;
+    public int _health = 3;
+    public float movementSpeed = 8f;
+    public float sprintMultiplier = 1.5f; // Speed multiplier when running
+    public float playerJumpHeight = 3f; // Height the player can jump
+    public float gravity = 50f; // Gravity affecting the player
 }
