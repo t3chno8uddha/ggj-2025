@@ -1,9 +1,19 @@
 using System;
+using UnityEngine.AI;
 
 namespace ProjectGZA
 {
     public class WalkState : BaseState
     {
+        public WalkState(NavMeshAgent agent, UnitVision unitVision)
+        {
+            _agent = agent;
+            _unitVision = unitVision;
+        }
+
+        private NavMeshAgent _agent;
+        private UnitVision _unitVision;
+
         public override void OnEnter()
         {
             throw new NotImplementedException();
@@ -16,7 +26,8 @@ namespace ProjectGZA
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            var closestEnemy = _unitVision.ClosestTarget;
+            _agent.SetDestination(closestEnemy.transform.position);
         }
     }
 }

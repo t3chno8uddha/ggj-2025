@@ -33,12 +33,12 @@ public class Enemy : MonoBehaviour
     {
         _stateMachine = new();
 
-        var walkState = new WalkState();
+        var walkState = new WalkState(_agent, _unitVision);
         var attackState = new AttackState();
         var deathState = new DeathState();
 
-        _stateMachine.AddTransition(walkState, attackState, new FuncPredicate(() => _unitVision.TargetInRange));
-        _stateMachine.AddTransition(attackState, walkState, new FuncPredicate(() => !_unitVision.TargetInRange));
+        _stateMachine.AddTransition(walkState, attackState, new FuncPredicate(() => _unitVision.HasTarget));
+        _stateMachine.AddTransition(attackState, walkState, new FuncPredicate(() => !_unitVision.HasTarget));
         _stateMachine.AddAnyTransition(deathState, new FuncPredicate(() => _unitHealth.IsDead));
 
         _stateMachine.SetState(walkState);
