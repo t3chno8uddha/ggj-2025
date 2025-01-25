@@ -134,7 +134,7 @@ Material:
     - _Saturation: 0.5
     - _Scale: 0
     - _Sharpness: 0.005
-    - _Shift_Speed: 0.1
+    - _Shift_Speed: 0.05
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -158,13 +158,13 @@ Material:
     - _Color_A: {r: 0, g: 0.8083906, b: 1, a: 0}
     - _Color_B: {r: 1, g: 0.5990566, b: 0.93844426, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Foam_and_Twirl: {r: 0.5, g: 1, b: 0, a: 0}
+    - _Foam_and_Twirl: {r: 0.25, g: 0.5, b: 0, a: 0}
     - _Noise: {r: 4.63, g: 6.34, b: 0, a: 0}
     - _Offset: {r: 2.5, g: -2.5, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Twirl: {r: 0.0625, g: 1, b: 0, a: 0}
     - _Vertex: {r: 0.1, g: 0.25, b: 0, a: 0}
-    - _Vertex_Voronoi: {r: 0.5, g: 1, b: 0.1, a: 0}
+    - _Vertex_Voronoi: {r: 0.25, g: 1, b: 0.05, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4912799315943688662
 MonoBehaviour:
