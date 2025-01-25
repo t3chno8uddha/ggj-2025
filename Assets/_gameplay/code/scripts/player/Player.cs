@@ -6,10 +6,8 @@ public class Player : Singleton<Player>
     private UnitHealth _unitHealth;
     public Vector3 CurrentPosition => transform.position;
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
-
         _unitHealth = GetComponent<UnitHealth>();
 
         TargetManager.Instance.RegisterToManager(_unitHealth);
