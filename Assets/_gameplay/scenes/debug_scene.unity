@@ -2459,11 +2459,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_MainBase
       objectReference: {fileID: 0}
-    - target: {fileID: 7072681198860210136, guid: c6bbd6c1950ab4741ad83bd72f378da3,
-        type: 3}
-      propertyPath: _health
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

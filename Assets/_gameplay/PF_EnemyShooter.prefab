@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1139662845493052601}
   m_Layer: 0
   m_Name: PF_EnemyShooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _isDead: 0
+  _targetSize: 1
 --- !u!114 &3004674106623568291
 MonoBehaviour:
   m_ObjectHideFlags: 0

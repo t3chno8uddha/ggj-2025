@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private TargetType _checkTargetType;
+
+    [SerializeField] private ParticleSystem _particle;
     private Vector3 _targetPosition;
     private int _damageToDeal;
 
@@ -34,7 +36,7 @@ public class Projectile : MonoBehaviour
     {
         if (_checkTargetType == TargetType.Enemy)
         {
-            if (other.gameObject.CompareTag("MainTarget"))
+            if (other.gameObject.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
 
@@ -43,7 +45,7 @@ public class Projectile : MonoBehaviour
         }
         else if (_checkTargetType == TargetType.MainTarget)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("MainTarget"))
             {
                 other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
 
@@ -54,6 +56,11 @@ public class Projectile : MonoBehaviour
     }
     private void DestroyProjectile()
     {
+        if (_particle != null)
+        {
+            Instantiate(_particle, transform.position, Quaternion.identity, null);
+        }
+
         Destroy(gameObject);
     }
 }
