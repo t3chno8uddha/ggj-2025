@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 445966780159381974}
   - component: {fileID: 8147171135602493011}
   - component: {fileID: 8102291872446310590}
-  - component: {fileID: 5679215580310725228}
   - component: {fileID: 5954737386790362112}
   - component: {fileID: 3362373035898871952}
+  - component: {fileID: 6172917015933323121}
   m_Layer: 0
-  m_Name: PF_Enemy
+  m_Name: PF_EnemyRunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,20 +73,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _isDead: 0
---- !u!114 &5679215580310725228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5321065483320714209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434b5d496e8abbb4f890a684d7883546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackRate: 0.5
-  _damage: 1
 --- !u!114 &5954737386790362112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d88d0284aff6dc4c9ad0ec0491ae2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 10
+  _attackRange: 3
+  _hasTarget: 0
 --- !u!114 &3362373035898871952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +106,20 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &6172917015933323121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321065483320714209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f30f75a2ee5ea47a3f533dede3ef02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRate: 0.5
+  _damage: 1
 --- !u!1 &7614223407027430567
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,20 +1,22 @@
 using System;
+using UnityEngine;
 
 namespace ProjectGZA
 {
-    public class AttackState : BaseState
+    public class AttackStateBasic : BaseState
     {
-        public AttackState(Enemy enemy, UnitVision vision)
+        public AttackStateBasic(Enemy enemy, UnitVision vision)
         {
             _enemy = enemy;
             _vision = vision;
             _attackRate = enemy.AttackRate;
         }
 
-        private Enemy _enemy;
-        private UnitVision _vision;
-        private float _attackRate;
-        private float _timer;
+        protected Enemy _enemy;
+        protected UnitVision _vision;
+        protected float _attackRate;
+        protected float _timer;
+
         public override void OnEnter()
         {
 
@@ -27,13 +29,18 @@ namespace ProjectGZA
 
         public override void Update()
         {
-            _timer += _attackRate;
+            _timer += Time.deltaTime;
 
             if (_timer < _attackRate) return;
 
-            _vision.ClosestTarget.GetDamage(_enemy.Damage);
+            PerformAttack();
 
             _timer = 0;
+        }
+
+        protected virtual void PerformAttack()
+        {
+
         }
     }
 }

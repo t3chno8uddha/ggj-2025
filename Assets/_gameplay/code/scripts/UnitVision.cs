@@ -5,15 +5,18 @@ public class UnitVision : MonoBehaviour
 {
     [SerializeField] private float _attackRange = 10f;
 
-    private bool _hasTarget;
+    [SerializeField] private bool _hasTarget;
     private float _castRate = 0.2f;
     private float _timer;
 
     private List<UnitHealth> _targets;
     private UnitHealth _closestTarget;
 
+
     public bool HasTargetInAttackRange { get => _hasTarget; }
     public UnitHealth ClosestTarget => _closestTarget;
+
+    public float AttackRange { get => _attackRange; set => _attackRange = value; }
 
     private void Start()
     {
@@ -37,7 +40,7 @@ public class UnitVision : MonoBehaviour
     {
         _closestTarget = FindClosestTarget();
 
-        _hasTarget = (transform.position - _closestTarget.transform.position).sqrMagnitude < _attackRange;
+        _hasTarget = Vector3.Distance(transform.position, _closestTarget.transform.position) < AttackRange;
     }
 
     private UnitHealth FindClosestTarget()
