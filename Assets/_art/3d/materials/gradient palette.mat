@@ -8,23 +8,20 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: gradient palette
-  m_Shader: {fileID: -6465566751694194690, guid: 50d7ff6aa0de56c04a370efd43638ad7,
+  m_Shader: {fileID: -6465566751694194690, guid: e5ee523cae8793b5fb18c8d4e5d577fd,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _GRADIENT_AXIS_Y
   - _GRADIENT_SPACE_UV
-  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
-  disabledShaderPasses:
-  - SHADOWCASTER
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -119,13 +116,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Outline_Depth: 1
-    - _Outline_Thickness: 2
+    - _Outline_Thickness: 1
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _Saturation: 1
-    - _Smoothness: 0.66
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
