@@ -43,6 +43,8 @@ public class UnitHealth : MonoBehaviour, IDamagable
     {
         _currentHealth = _health;
 
+        _isDead = false;
+
         OnReset?.Invoke();
     }
 }
