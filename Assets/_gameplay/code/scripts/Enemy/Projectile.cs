@@ -31,6 +31,8 @@ public class Projectile : MonoBehaviour
         {
             other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
 
+            Debug.Log("ssssss");
+
             DestroyProjectile();
         }
     }
