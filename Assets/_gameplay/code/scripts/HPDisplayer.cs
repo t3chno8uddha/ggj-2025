@@ -16,6 +16,8 @@ public class HPDisplayer : MonoBehaviour
     {
         _unitHealth.OnDamageReceived += UpdateHealth;
 
+        _unitHealth.OnDeath += HidePanel;
+
         UpdateHealth();
     }
 
@@ -28,5 +30,10 @@ public class HPDisplayer : MonoBehaviour
 
         var endValue = (float)_unitHealth.CurrentHealth / _unitHealth.MaxHealth;
         _fillTween = _fill.DOFillAmount(endValue, 0.1f);
+    }
+
+    private void HidePanel()
+    {
+        gameObject.SetActive(false);
     }
 }
