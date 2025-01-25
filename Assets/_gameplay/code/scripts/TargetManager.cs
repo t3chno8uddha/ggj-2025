@@ -5,6 +5,12 @@ public class TargetManager : Singleton<TargetManager>
 {
     public static TargetManager Instance => _instance;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        _instance = this;
+    }
     [SerializeField] private List<UnitHealth> _mainTargets = new();
 
     public List<UnitHealth> MainTargets => _mainTargets;
