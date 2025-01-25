@@ -126,6 +126,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Outline_Thickness: 0.48
     - _Parallax: 0.005
     - _Particle: 1
     - _QueueControl: 0
@@ -161,6 +162,7 @@ Material:
     - _Foam_and_Twirl: {r: 0.5, g: 1, b: 0, a: 0}
     - _Noise: {r: 4.63, g: 6.34, b: 0, a: 0}
     - _Offset: {r: 2.5, g: -2.5, b: 0, a: 0}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Twirl: {r: 0.0625, g: 1, b: 0, a: 0}
     - _Vertex: {r: 0.1, g: 0.25, b: 0, a: 0}

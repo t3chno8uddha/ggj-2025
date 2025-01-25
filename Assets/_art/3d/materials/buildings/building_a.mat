@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: palette
+  m_Name: building_a
   m_Shader: {fileID: -6465566751694194690, guid: 50d7ff6aa0de56c04a370efd43638ad7,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _GRADIENT_AXIS_Y
-  - _GRADIENT_SPACE_WORLD
+  - _GRADIENT_AXIS_X
+  - _GRADIENT_SPACE_UV
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: 56fdf7f36a25f502798957d27af28412, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c85111ec33f2809e9ea77603ff4545a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -96,7 +96,7 @@ Material:
     - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Contrast: 1.5
+    - _Contrast: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -104,25 +104,25 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _GRADIENT_AXIS: 1
-    - _GRADIENT_SPACE: 2
+    - _GRADIENT_AXIS: 0
+    - _GRADIENT_SPACE: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Gradient_Position: -1
-    - _Gradient_Spread: 2
+    - _Gradient_Position: 0
+    - _Gradient_Spread: 0
     - _Hue: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline_Depth: 10
-    - _Outline_Thickness: 1
+    - _Outline_Depth: 1
+    - _Outline_Thickness: 2
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _Saturation: 1.125
-    - _Smoothness: 0.25
+    - _Saturation: 1
+    - _Smoothness: 0.75
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -136,7 +136,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _Gradient_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
