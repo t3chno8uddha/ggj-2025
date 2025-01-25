@@ -24,55 +24,72 @@ public class RecoilData
 public class PlayerFiring : MonoBehaviour
 {
     [SerializeField] private float _rayDistance = 100f;
-    [SerializeField] private int activeGunIndex = 0;
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private int activeGunIndex = 0;
+    [SerializeField] private float _swapTime = 1;
     [SerializeField] private GunSetup[] _gunSteps;
     [SerializeField] private RecoilData _recoilData;
 
     private Tweener _recoilTween;
+    private bool _changingWeapons;
 
     private GunSetup ActiveGun => _gunSteps[activeGunIndex];
     bool isFiring = false;
     float fireTime;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            CountFire();
-        }
+        ChangeWeapons();
 
         Fire();
     }
 
-    void CountFire()
+    private void ChangeWeapons()
     {
-        isFiring = true;
-        fireTime = Time.time;
+        if (Input.GetKeyDown(KeyCode.Q) && !_changingWeapons)
+        {
+            _changingWeapons = true;
+
+            _weaponParent.localPosition = Vector3.zero;
+
+            _weaponParent.DOLocalMoveY(-5f, _swapTime / 2f).SetEase(Ease.InSine).OnComplete(() =>
+            {
+                ActiveGun.GunObject.SetActive(false);
+
+                activeGunIndex++;
+
+                if (activeGunIndex > _gunSteps.Length - 1)
+                {
+                    activeGunIndex = 0;
+                }
+
+                ActiveGun.GunObject.SetActive(true);
+
+                _weaponParent.DOLocalMoveY(0, _swapTime / 2f).SetEase(Ease.OutSine).OnComplete(() =>
+                {
+                    _changingWeapons = false;
+                });
+            });
+        }
     }
 
     void Fire()
     {
+        if (_changingWeapons) return;
+
         if (Input.GetMouseButtonUp(0))
         {
-
             Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, 0f);
-
-
             Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-
 
             if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance))
             {
                 Vector3 worldPosition = hit.point;
-                Debug.Log($"Hit at: {worldPosition}");
-
                 ShootProjectile(worldPosition, ActiveGun);
             }
             else
             {
                 Vector3 fallbackPosition = ray.origin + ray.direction * _rayDistance;
-                Debug.Log($"No hit detected. Shooting towards: {fallbackPosition}");
                 ShootProjectile(fallbackPosition, ActiveGun);
             }
         }
@@ -94,7 +111,6 @@ public class PlayerFiring : MonoBehaviour
             {
                 projectile.SetTarget(shiftedPositions, gunData.Damage);
             }
-
         }
     }
 
@@ -114,5 +130,10 @@ public class PlayerFiring : MonoBehaviour
         {
             _recoilTween = _weaponParent.DOLocalMoveZ(0, _recoilData.RecoilDuration);
         });
+    }
+
+    private void ChangeWeapon()
+    {
+
     }
 }
