@@ -18,16 +18,16 @@ public class UnitHealth : MonoBehaviour, IDamagable
 
     private void Awake()
     {
-        CurrentHealth = _health;
+        _currentHealth = _health;
     }
 
     public void GetDamage(int damageAmount)
     {
         if (_isDead) return;
 
-        CurrentHealth -= damageAmount;
+        _currentHealth -= damageAmount;
 
-        if (CurrentHealth > 0)
+        if (_currentHealth > 0)
         {
             OnDamageReceived?.Invoke();
         }
@@ -36,5 +36,10 @@ public class UnitHealth : MonoBehaviour, IDamagable
             _isDead = true;
             OnDeath?.Invoke();
         }
+    }
+
+    public void ResetHp()
+    {
+        _currentHealth = _health;
     }
 }
