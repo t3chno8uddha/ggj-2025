@@ -4,8 +4,6 @@ public class Player : Singleton<Player>
 {
     // Start is called before the first frame update
     private UnitHealth _unitHealth;
-    public static Player Instance => _instance;
-
     public Vector3 CurrentPosition => transform.position;
 
     public override void Awake()
