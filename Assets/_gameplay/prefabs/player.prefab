@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738622901092664479}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07474859, y: 0.09741429, z: 0.13706599, w: -0.9829222}
+  m_LocalRotation: {x: -0.087142505, y: 0.017386038, z: 0.0015210818, w: 0.99604297}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 4073143346042271104}
   - {fileID: 8403020646436255290}
   m_Father: {fileID: 2698208284091135663}
-  m_LocalEulerAnglesHint: {x: -10, y: -10, z: -15}
+  m_LocalEulerAnglesHint: {x: -10, y: 2, z: 0}
 --- !u!33 &3452301298470680803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -224,9 +224,9 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   stats:
   - _health: 3
-    movementSpeed: 8
-    sprintMultiplier: 1.5
-    playerJumpHeight: 3
+    movementSpeed: 14
+    sprintMultiplier: 3
+    playerJumpHeight: 12
     gravity: 50
   statIndex: 0
 --- !u!114 &2981836728236290992
@@ -244,13 +244,20 @@ MonoBehaviour:
   _rayDistance: 100
   activeGunIndex: 0
   _gunSteps:
-  - GunObject: {fileID: 0}
-    ShootPoint: {fileID: 0}
+  - GunObject: {fileID: 4717080328861865877}
+    ShootPoint: {fileID: 6113455085403028190}
     ProjectilePrefab: {fileID: 1424779596369704806, guid: c74114bc31e18284eb99e035a4406878,
       type: 3}
     Damage: 2
     BulletAmount: 5
     SpreadAngle: 5
+  - GunObject: {fileID: 5090860231214626404}
+    ShootPoint: {fileID: 6113455085403028190}
+    ProjectilePrefab: {fileID: 1424779596369704806, guid: c74114bc31e18284eb99e035a4406878,
+      type: 3}
+    Damage: 3
+    BulletAmount: 1
+    SpreadAngle: 0
 --- !u!143 &18951786575146894
 CharacterController:
   m_ObjectHideFlags: 0
@@ -348,8 +355,8 @@ Camera:
   m_GameObject: {fileID: 3057455388867998581}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -624,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2698208284091135663
 Transform:
   m_ObjectHideFlags: 0
