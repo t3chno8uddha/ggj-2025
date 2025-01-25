@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private UnitHealth _mainBase;
     [SerializeField] private CanvasGroup _gameOverPanel;
+    [SerializeField] private GameObject[] _objectsToDisableOnGameOver;
     [SerializeField] private int _resetLevelIn = 4;
     [SerializeField] private UnitHealth _player;
     [SerializeField] private CanvasGroup _respawnPanel;
+    [SerializeField] private GameObject[] _objectsToDisableOnPlayerDeath;
     [SerializeField] private TMP_Text _respawnText;
     [SerializeField] private int _reviveTime = 5;
     [SerializeField] private Transform _respawnPoint;
@@ -45,6 +47,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator RestartLevel()
     {
         Debug.Log("Game Over");
+
+        foreach (var item in _objectsToDisableOnGameOver)
+        {
+            item.SetActive(false);
+        }
+
         _respawnPanel.gameObject.SetActive(false);
         _gameOverPanel.gameObject.SetActive(true);
         _gameOverPanel.alpha = 0;
@@ -61,6 +69,11 @@ public class GameManager : MonoBehaviour
         _respawnPanel.alpha = 0;
         _respawnPanel.DOFade(1, 0.5f);
 
+        foreach (var item in _objectsToDisableOnGameOver)
+        {
+            item.SetActive(false);
+        }
+
         _playerMovement.enabled = false;
 
         for (int i = _reviveTime; i >= 0; i--)
@@ -75,6 +88,11 @@ public class GameManager : MonoBehaviour
         _player.ResetHp();
 
         _respawnPanel.gameObject.SetActive(false);
+
+        foreach (var item in _objectsToDisableOnGameOver)
+        {
+            item.SetActive(true);
+        }
 
         _playerMovement.enabled = true;
     }

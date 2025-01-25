@@ -20,5 +20,10 @@ public class Player : Singleton<Player>
         {
             TargetManager.Instance.UnregisterToManager(_unitHealth);
         };
+
+        _unitHealth.OnReset += () =>
+        {
+            TargetManager.Instance.RegisterToManager(_unitHealth);
+        };
     }
 }

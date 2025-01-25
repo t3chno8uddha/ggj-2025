@@ -15,6 +15,7 @@ public class UnitHealth : MonoBehaviour, IDamagable
 
     public event Action OnDamageReceived;
     public event Action OnDeath;
+    public event Action OnReset;
 
     private void Awake()
     {
@@ -41,5 +42,7 @@ public class UnitHealth : MonoBehaviour, IDamagable
     public void ResetHp()
     {
         _currentHealth = _health;
+
+        OnReset?.Invoke();
     }
 }
