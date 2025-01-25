@@ -1,4 +1,4 @@
-using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace ProjectGZA
@@ -16,12 +16,12 @@ namespace ProjectGZA
 
         public override void OnEnter()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnExit()
         {
-            throw new NotImplementedException();
+            _agent.SetDestination(_agent.transform.position);
         }
 
         public override void Update()
