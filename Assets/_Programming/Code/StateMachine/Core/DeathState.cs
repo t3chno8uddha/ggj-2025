@@ -1,22 +1,29 @@
-using System;
+using UnityEngine.AI;
+using UnityEngine;
 
 namespace ProjectGZA
 {
     public class DeathState : BaseState
     {
+        public DeathState(NavMeshAgent navMesh)
+        {
+            _agent = navMesh;
+        }
+
+        private NavMeshAgent _agent;
         public override void OnEnter()
         {
-            throw new NotImplementedException();
+            MonoBehaviour.Destroy(_agent.gameObject);
         }
 
         public override void OnExit()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void Update()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

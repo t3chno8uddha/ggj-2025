@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3004674106623568291}
   - component: {fileID: 2946637031677589460}
   - component: {fileID: 1139662845493052601}
+  - component: {fileID: 4788560886966146921}
   m_Layer: 0
   m_Name: PF_EnemyShooter
   m_TagString: Enemy
@@ -125,6 +126,29 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 1424779596369704806, guid: 13aad844a8c3d4049928c17a44b3e680,
     type: 3}
   _projectileSpawnPoint: {fileID: 4222889895138272303}
+--- !u!136 &4788560886966146921
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102381439612547064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4732303767719768676
 GameObject:
   m_ObjectHideFlags: 0

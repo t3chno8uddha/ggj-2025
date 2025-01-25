@@ -16,7 +16,7 @@ public class EnemyShooter : Enemy
 
         var walkState = new WalkState(_agent, _unitVision);
         var attackState = new AttackStateShooter(this, _unitVision);
-        var deathState = new DeathState();
+        var deathState = new DeathState(_agent);
 
         _stateMachine.AddTransition(walkState, attackState, new FuncPredicate(() => _unitVision.HasTargetInAttackRange));
         _stateMachine.AddTransition(attackState, walkState, new FuncPredicate(() => !_unitVision.HasTargetInAttackRange));
