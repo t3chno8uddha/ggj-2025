@@ -3,14 +3,9 @@ using System.Collections.Generic;
 public class TargetManager : Singleton<TargetManager>
 {
     public static TargetManager Instance => _instance;
-    private List<UnitHealth> _mainTargets;
+    private List<UnitHealth> _mainTargets = new();
 
     public List<UnitHealth> MainTargets => _mainTargets;
-
-    public static UnitHealth ReturnClosestTarget()
-    {
-        return null;
-    }
 
     public void RegisterToManager(UnitHealth target)
     {

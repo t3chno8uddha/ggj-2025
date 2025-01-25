@@ -5,19 +5,24 @@ public class UnitVision : MonoBehaviour
 {
     [SerializeField] private float _attackRange = 10f;
 
-    private bool _hasTarget;
+    [SerializeField] private bool _hasTarget;
     private float _castRate = 0.2f;
     private float _timer;
 
     private List<UnitHealth> _targets;
     private UnitHealth _closestTarget;
 
-    public bool HasTarget { get => _hasTarget; }
-    public UnitHealth ClosestTarget { get => _closestTarget; set => _closestTarget = value; }
+
+    public bool HasTargetInAttackRange { get => _hasTarget; }
+    public UnitHealth ClosestTarget => _closestTarget;
+
+    public float AttackRange { get => _attackRange; set => _attackRange = value; }
 
     private void Start()
     {
         _targets = TargetManager.Instance.MainTargets;
+
+        CheckDistance();
     }
 
     private void Update()
@@ -33,25 +38,13 @@ public class UnitVision : MonoBehaviour
 
     private void CheckDistance()
     {
-        ClosestTarget = FindClosestTarget();
+        _closestTarget = FindClosestTarget();
+
+        _hasTarget = Vector3.Distance(transform.position, _closestTarget.transform.position) < AttackRange;
     }
 
     private UnitHealth FindClosestTarget()
     {
-        UnitHealth closestTarget = null;
-        float closestDistanceSqr = float.MaxValue;
-
-        for (int i = 0; i < _targets.Count; i++)
-        {
-            UnitHealth target = _targets[i];
-            float distanceSqr = (transform.position - target.transform.position).sqrMagnitude;
-            if (distanceSqr < closestDistanceSqr)
-            {
-                closestDistanceSqr = distanceSqr;
-                closestTarget = target;
-            }
-        }
-
-        return closestTarget;
+        return _targets[0];
     }
 }
