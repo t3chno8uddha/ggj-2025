@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawner Settings")]
     public List<EnemyData> enemies = new List<EnemyData>();
     public int enemiesPerWave = 5;
+    public int increaseBy = 2;
     public float spawnDelay = 1f;
     public Transform[] spawnPoints;
 
@@ -38,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
         waveActive = false;
 
         yield return new WaitUntil(() => activeEnemies.Count == 0);
+        enemiesPerWave += increaseBy;
         StartCoroutine(SpawnWave());
     }
 

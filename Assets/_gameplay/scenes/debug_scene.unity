@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.05882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -890,7 +890,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 44.5815, y: 44.5815}
+  m_SizeDelta: {x: 141.041, y: 141.041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287053268
 MonoBehaviour:
@@ -1013,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &379231005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1102,6 +1102,7 @@ MonoBehaviour:
       type: 3}
     spawnChance: 0.3
   enemiesPerWave: 5
+  increaseBy: 2
   spawnDelay: 0.5
   spawnPoints:
   - {fileID: 1692529356}
@@ -2586,10 +2587,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 875429408}
-  - {fileID: 379231005}
-  - {fileID: 1554547305}
   - {fileID: 300195934}
   - {fileID: 1593299500}
+  - {fileID: 379231005}
+  - {fileID: 1554547305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3710,6 +3711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090860231214626404, guid: 14ffcd90ca61057ea83a54b446042f97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5736887637440319886, guid: 14ffcd90ca61057ea83a54b446042f97,
         type: 3}
