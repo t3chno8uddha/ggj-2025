@@ -1,8 +1,13 @@
 using UnityEngine;
 
+public enum TargetType
+{
+    Enemy, MainTarget
+}
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private TargetType _checkTargetType;
     private Vector3 _targetPosition;
     private int _damageToDeal;
 
@@ -27,14 +32,25 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("MainTarget"))
+        if (_checkTargetType == TargetType.Enemy)
         {
-            other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
+            if (other.gameObject.CompareTag("MainTarget"))
+            {
+                other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
 
-            Debug.Log("ssssss");
-
-            DestroyProjectile();
+                DestroyProjectile();
+            }
         }
+        else if (_checkTargetType == TargetType.MainTarget)
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<IDamagable>().GetDamage(_damageToDeal);
+
+                DestroyProjectile();
+            }
+        }
+
     }
     private void DestroyProjectile()
     {

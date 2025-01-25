@@ -1,21 +1,28 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public class GunSetups
+{
+    public GameObject _gunObject;
+    public Transform _shootPoint;
+}
 
 public class PlayerFiring : MonoBehaviour
 {
+    [SerializeField] private float _rayDistance = 100f;
+    [SerializeField] private GunSetups[] _gunSteps;
     bool isFiring = false;
-
     float fireTime;
-
-    [SerializeField] ParticleSystem[] weaponSystem;
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             CountFire();
         }
+
         if (Input.GetMouseButtonUp(0))
-        {   
+        {
             Fire();
         }
     }
@@ -28,23 +35,27 @@ public class PlayerFiring : MonoBehaviour
 
     void Fire()
     {
-        isFiring = false;
-        var releaseTime = Time.time - fireTime;
-
-        switch (releaseTime)
+        if (Input.GetMouseButtonDown(0)) // Check for left mouse button press
         {
-            case < 0.25f:
-                weaponSystem[0].Play();
-                break;
-            case < 0.5f:
-                weaponSystem[1].Play();
-                break;
-            case > 0.5f:
-                weaponSystem[2].Play();
-                break;
-        }
+            // Calculate the screen center point
+            Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
 
-        fireTime = 0;
+            // Create a ray from the camera through the screen center
+            Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
+            // Perform the raycast
+            if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance))
+            {
+                // Log or use the world position of the hit
+                Vector3 worldPosition = hit.point;
+                Debug.Log($"Hit at: {worldPosition}");
+
+            }
+            else
+            {
+                Debug.Log("No hit detected.");
+            }
+        }
     }
 
 

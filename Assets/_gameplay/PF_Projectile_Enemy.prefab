@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3279055026144813906}
   - component: {fileID: 3435915216181840769}
   m_Layer: 0
-  m_Name: PF_Projectile
+  m_Name: PF_Projectile_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1c31c54d0d04c4bb73ee879df64878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileSpeed: 0.1
+  _projectileSpeed: 0.06
+  _checkTargetType: 1
 --- !u!135 &3279055026144813906
 SphereCollider:
   m_ObjectHideFlags: 0
