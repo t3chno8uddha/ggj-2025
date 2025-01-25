@@ -27,6 +27,7 @@ namespace ProjectGZA
         public override void Update()
         {
             var closestEnemy = _unitVision.ClosestTarget;
+            _agent.stoppingDistance = _unitVision.AttackRange + closestEnemy.TargetSize;
             _agent.SetDestination(closestEnemy.transform.position);
         }
     }

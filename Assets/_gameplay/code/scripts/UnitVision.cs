@@ -39,11 +39,26 @@ public class UnitVision : MonoBehaviour
     {
         _closestTarget = FindClosestTarget();
 
-        _hasTarget = Vector3.Distance(transform.position, _closestTarget.transform.position) < AttackRange;
+        _hasTarget = _closestTarget != null && Vector3.Distance(transform.position, _closestTarget.transform.position) < AttackRange + _closestTarget.TargetSize;
     }
 
     private UnitHealth FindClosestTarget()
     {
-        return _targets[0];
+        UnitHealth closest = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (UnitHealth target in _targets)
+        {
+            if (target == null) continue;
+
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closest = target;
+            }
+        }
+
+        return closest;
     }
 }
