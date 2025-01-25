@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HPDisplayer : MonoBehaviour
 {
-    [SerializeField] private UnitHealth _unitHealth;
-    [SerializeField] private Image _fill;
+    [SerializeField] protected UnitHealth _unitHealth;
+    [SerializeField] protected Image _fill;
 
-    private Tweener _fillTween;
+    protected Tweener _fillTween;
     // Update is called once per frame
 
-    private void Start()
+    protected void Start()
     {
         _unitHealth.OnDamageReceived += UpdateHealth;
 
         _unitHealth.OnDeath += HidePanel;
 
+        _unitHealth.OnReset += ShowPanel;
+        _unitHealth.OnReset += UpdateHealth;
+
         UpdateHealth();
     }
 
-    private void UpdateHealth()
+    protected virtual void UpdateHealth()
     {
         if (_fillTween != null && _fillTween.IsPlaying())
         {
@@ -32,8 +34,13 @@ public class HPDisplayer : MonoBehaviour
         _fillTween = _fill.DOFillAmount(endValue, 0.1f);
     }
 
-    private void HidePanel()
+    protected void HidePanel()
     {
         gameObject.SetActive(false);
+    }
+
+    protected void ShowPanel()
+    {
+        gameObject.SetActive(true);
     }
 }
