@@ -7,10 +7,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(UnitHealth))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float _attackRate = 0.5f;
+    [SerializeField] private int _damage = 1;
     private NavMeshAgent _agent;
     private UnitHealth _unitHealth;
     private UnitVision _unitVision;
     private StateMachine _stateMachine;
+
+    public float AttackRate { get => _attackRate; }
+    public int Damage { get => _damage; }
 
     private void Awake()
     {
@@ -39,7 +44,7 @@ public class Enemy : MonoBehaviour
         _stateMachine = new();
 
         var walkState = new WalkState(_agent, _unitVision);
-        var attackState = new AttackState();
+        var attackState = new AttackState(this, _unitVision);
         var deathState = new DeathState();
 
         _stateMachine.AddTransition(walkState, attackState, new FuncPredicate(() => _unitVision.HasTargetInAttackRange));

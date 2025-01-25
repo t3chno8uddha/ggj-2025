@@ -5,7 +5,7 @@ public class UnitHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] private int _health = 3;
 
-    private bool _isDead;
+    [SerializeField] private bool _isDead;
 
     public bool IsDead { get => _isDead; }
 
