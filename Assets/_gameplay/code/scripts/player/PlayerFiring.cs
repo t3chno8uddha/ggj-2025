@@ -24,6 +24,7 @@ public class RecoilData
 public class PlayerFiring : MonoBehaviour
 {
     [SerializeField] private float _rayDistance = 100f;
+    [SerializeField] private LayerMask _layer;
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private int activeGunIndex = 0;
@@ -82,7 +83,7 @@ public class PlayerFiring : MonoBehaviour
             Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, 0f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance))
+            if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance, _layer))
             {
                 Vector3 worldPosition = hit.point;
                 ShootProjectile(worldPosition, ActiveGun);

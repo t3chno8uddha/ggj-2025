@@ -2,18 +2,18 @@ using UnityEngine;
 
 public enum TargetType
 {
-    Enemy, MainTarget
+    Enemy, MainTarget, Obstacle
 }
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float _projectileSpeed = 10f;
-    [SerializeField] private TargetType _checkTargetType;
+    [SerializeField] protected float _projectileSpeed = 10f;
+    [SerializeField] protected TargetType _checkTargetType;
 
-    [SerializeField] private ParticleSystem _particle;
-    private Vector3 _targetPosition;
-    private int _damageToDeal;
+    [SerializeField] protected ParticleSystem _particle;
+    protected Vector3 _targetPosition;
+    protected int _damageToDeal;
 
-    private float _checkThreshhold = 0.1f;
+    protected float _checkThreshhold = 0.1f;
 
     private void Update()
     {
@@ -52,9 +52,8 @@ public class Projectile : MonoBehaviour
                 DestroyProjectile();
             }
         }
-
     }
-    private void DestroyProjectile()
+    protected virtual void DestroyProjectile()
     {
         if (_particle != null)
         {
