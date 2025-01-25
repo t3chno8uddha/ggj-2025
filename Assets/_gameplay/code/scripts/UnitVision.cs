@@ -12,7 +12,6 @@ public class UnitVision : MonoBehaviour
     private List<UnitHealth> _targets;
     private UnitHealth _closestTarget;
 
-
     public bool HasTargetInAttackRange { get => _hasTarget; }
     public UnitHealth ClosestTarget => _closestTarget;
 

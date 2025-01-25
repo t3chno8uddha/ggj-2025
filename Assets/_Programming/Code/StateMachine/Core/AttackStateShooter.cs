@@ -20,7 +20,7 @@ namespace ProjectGZA
             var targetPosition = _vision.ClosestTarget.transform.position;
             var spawnPoint = _projectileSpawnPoint.position;
             var projectile = MonoBehaviour.Instantiate(_projectilePrefab, spawnPoint, Quaternion.identity, null);
-            projectile.SetTarget(targetPosition, _enemy.Damage);
+            projectile.SetTarget(targetPosition.WithY(targetPosition.y + 1.5f), _enemy.Damage);
         }
     }
 }
