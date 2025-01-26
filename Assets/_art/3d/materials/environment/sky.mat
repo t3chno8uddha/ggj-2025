@@ -155,7 +155,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Cloud_Speed: {r: 0.025, g: 0, b: 0, a: 0}
+    - _Cloud_Speed: {r: 0.01, g: 0, b: 0, a: 0}
     - _Clouds_Color_A: {r: 1, g: 1, b: 1, a: 0}
     - _Clouds_Color_A_1: {r: 1, g: 1, b: 1, a: 0}
     - _Clouds_Color_B: {r: 0.59474015, g: 0.75209934, b: 0.9339623, a: 0}
@@ -163,10 +163,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_A: {r: 0.4292453, g: 0.9771698, b: 1, a: 0}
     - _Color_B: {r: 0.2706924, g: 0.48265657, b: 0.7264151, a: 0}
-    - _Divison_and_Offset: {r: -0.125, g: 0.25, b: 0, a: 0}
+    - _Divison_and_Offset: {r: 0, g: 0.25, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Gradient_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Mask_Speed: {r: 0, g: -0.025, b: 0, a: 0}
+    - _Mask_Speed: {r: 0, g: -0.01, b: 0, a: 0}
     - _Mask_Tiling: {r: -4, g: 2, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
@@ -174,8 +174,8 @@ Material:
     - _Remap_0: {r: 0, g: 0, b: 0, a: 0}
     - _Remap_1: {r: 1, g: 1, b: 1, a: 0}
     - _Sky_Color_A: {r: 0.7122642, g: 0.97223836, b: 1, a: 0}
-    - _Sky_Color_B: {r: 0, g: 0.654902, b: 0.9764706, a: 0}
-    - _Smoothstep: {r: -1, g: 0.5, b: 0, a: 0}
+    - _Sky_Color_B: {r: 0, g: 0.9529412, b: 0.8784422, a: 0}
+    - _Smoothstep: {r: -1, g: 0.74, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 5, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
