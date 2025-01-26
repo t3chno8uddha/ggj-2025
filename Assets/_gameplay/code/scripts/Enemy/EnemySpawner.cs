@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -16,7 +17,13 @@ public class EnemySpawner : MonoBehaviour
     public int enemiesPerWave = 5;
     public int increaseBy = 2;
     public float spawnDelay = 1f;
-    public Transform[] spawnPoints;
+    public Transform[] SpawnPoints;
+
+    private int _currentBaseIndex = 0;
+    public Transform MainBase;
+    public Transform[] MainBaseLocations;
+    public float jumpPower = 10;
+    public float jumpDuration = 4;
 
     private List<UnitHealth> activeEnemies = new();
     private bool waveActive = false;
@@ -40,15 +47,17 @@ public class EnemySpawner : MonoBehaviour
 
         yield return new WaitUntil(() => activeEnemies.Count == 0);
         enemiesPerWave += increaseBy;
+        ShiftMainBase();
+
         StartCoroutine(SpawnWave());
     }
 
     void SpawnEnemy()
     {
         var enemyToSpawn = SelectRandomEnemy();
-        if (enemyToSpawn != null && spawnPoints.Length > 0)
+        if (enemyToSpawn != null && MainBaseLocations.Length > 0)
         {
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform spawnPoint = MainBaseLocations[Random.Range(0, MainBaseLocations.Length)];
             var enemy = Instantiate(enemyToSpawn, spawnPoint.position.WithY(0f), Quaternion.identity, null);
             activeEnemies.Add(enemy);
 
@@ -77,5 +86,19 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void ShiftMainBase()
+    {
+        _currentBaseIndex += 1;
+
+        if (_currentBaseIndex > MainBaseLocations.Length - 1)
+        {
+            _currentBaseIndex = 0;
+        }
+
+        var nextPoint = MainBaseLocations[_currentBaseIndex];
+
+        MainBase.DOJump(nextPoint.position, jumpPower, 1, jumpDuration).SetEase(Ease.InOutQuad);
     }
 }
