@@ -297,6 +297,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: fedf497a12ee55b4e8dc9c7b41db7a39, type: 3}
     - {fileID: 8300000, guid: aeeef43864beb3340be9bcc5edb5f7fa, type: 3}
     - {fileID: 8300000, guid: 2d4a1feb7634748468b617560aa11098, type: 3}
+  unit: {fileID: 8715162738898280612}
+  mat: {fileID: 2100000, guid: 25782fb58ebc83474b435c9fccb5005a, type: 2}
 --- !u!143 &18951786575146894
 CharacterController:
   m_ObjectHideFlags: 0

@@ -55,9 +55,36 @@ public class PlayerFiring : MonoBehaviour
 
     private GunSetup ActiveGun => _gunSteps[_activeGunIndex];
 
+    [SerializeField] UnitHealth unit;
+    [SerializeField] Material mat;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
+        unit.OnDamageReceived += Hit;
+    }
+
+    public void Hit()
+    {
+        // Ensure the material and the property exist before tweening
+        if (mat != null && mat.HasProperty("_Hit"))
+        {
+            // Tween the "_Hit" property from its current value to 1 over 0.5 seconds
+            DOTween.To(
+                () => mat.GetFloat("_Hit"), 
+                value => mat.SetFloat("_Hit", value), 
+                1f, // Target value
+                0.5f // Duration in seconds
+            ).SetEase(Ease.OutQuad);
+        }
+        else
+        {
+            Debug.LogWarning("Material is null or does not have a '_Hit' property.");
+        }
     }
 
     void Update()
