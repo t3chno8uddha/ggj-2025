@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -22,6 +23,17 @@ public class RecoilData
     public float RecoilDuration = 0.3f;
 }
 
+[Serializable]
+public class AudioData
+{
+    public AudioClip[] clips;
+
+    public void PlaySound(AudioSource audioSource)
+    {
+        audioSource.PlayOneShot(clips.Random());
+    }
+}
+
 public class PlayerFiring : MonoBehaviour
 {
     [SerializeField] private float _rayDistance = 100f;
@@ -35,10 +47,19 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private GunSetup _chargedWeaponData;
     [SerializeField] private RecoilData _recoilData;
 
+    [SerializeField] private AudioData _gunAudioData;
+    private AudioSource _audioSource;
+
     private Tweener _recoilTween;
     private bool _changingWeapons;
 
     private GunSetup ActiveGun => _gunSteps[_activeGunIndex];
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         ChangeWeapons();
@@ -108,6 +129,8 @@ public class PlayerFiring : MonoBehaviour
 
     private void ShootProjectile(Vector3 targetPosition, GunSetup gunData)
     {
+        _gunAudioData.PlaySound(_audioSource);
+
         Recoil();
 
         for (int i = 0; i < gunData.BulletAmount; i++)

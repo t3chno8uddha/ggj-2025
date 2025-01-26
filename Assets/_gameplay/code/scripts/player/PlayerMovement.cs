@@ -25,8 +25,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float tiltSmoothness = 10, tiltStrength = 5;
     float tilt = 0f;
 
+    public AudioData _jumpSounds;
+    public AudioData _landSounds;
+    private AudioSource _audioSource;
+
+    private bool _madeLandSound;
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (!characterController) { characterController = GetComponent<CharacterController>(); }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,8 +53,13 @@ public class PlayerMovement : MonoBehaviour
         // Handle gravity
         if (characterController.isGrounded)
         {
-            if (isJumping) { isJumping = false; }
-            if ( Input.GetKeyDown(KeyCode.Space)) { Jump(); }
+
+            if (isJumping)
+            {
+                isJumping = false;
+                _landSounds.PlaySound(_audioSource);
+            }
+            if (Input.GetKeyDown(KeyCode.Space)) { Jump(); }
         }
         else if (!isJumping)
         {
@@ -80,13 +93,15 @@ public class PlayerMovement : MonoBehaviour
 
         tilt = Mathf.Lerp(tilt, horizontal * -tiltStrength, tiltSmoothness * Time.deltaTime);
 
-        camParent.localEulerAngles = new Vector3(camParent.localEulerAngles.x, camParent.localEulerAngles.y, tilt);        
+        camParent.localEulerAngles = new Vector3(camParent.localEulerAngles.x, camParent.localEulerAngles.y, tilt);
 
         return moveDirection;
     }
 
     void Jump()
     {
+        _jumpSounds.PlaySound(_audioSource);
+        _madeLandSound = false;
         isJumping = true;
         verticalVelocity = Mathf.Sqrt(stats[statIndex].playerJumpHeight * 2f * stats[statIndex].gravity);
     }
