@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a348084a0fcac47b111503d7ce808a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 999999
+  _health: 50
   _isDead: 0
-  _targetSize: 20
+  _targetSize: 15
 --- !u!114 &2278796229999480612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +148,8 @@ NavMeshObstacle:
   m_Shape: 0
   m_Extents: {x: 18.19, y: 1, z: 18.19}
   m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1 &5923900887084168478

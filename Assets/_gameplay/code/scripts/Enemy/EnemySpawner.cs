@@ -55,9 +55,9 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         var enemyToSpawn = SelectRandomEnemy();
-        if (enemyToSpawn != null && MainBaseLocations.Length > 0)
+        if (enemyToSpawn != null && SpawnPoints.Length > 0)
         {
-            Transform spawnPoint = MainBaseLocations[Random.Range(0, MainBaseLocations.Length)];
+            Transform spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
             var enemy = Instantiate(enemyToSpawn, spawnPoint.position.WithY(0f), Quaternion.identity, null);
             activeEnemies.Add(enemy);
 

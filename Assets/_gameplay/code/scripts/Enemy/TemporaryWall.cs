@@ -12,10 +12,12 @@ public class TemporaryWall : MonoBehaviour
 
         transform.DOPunchScale(Vector3.one, 0.4f).OnComplete(() =>
         {
-            transform.DOScale(defaultScale * _scaleMultiplier, _lifeTime).OnComplete(() =>
-            {
-                Destroy(gameObject);
-            });
+            transform.DOScale(defaultScale * _scaleMultiplier, _lifeTime / 3f);
+        });
+
+        transform.DOMove(transform.position, _lifeTime).OnComplete(() =>
+        {
+            Destroy(gameObject);
         });
     }
 }

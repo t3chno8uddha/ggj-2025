@@ -10,7 +10,7 @@ public class Player : Singleton<Player>
     {
         _unitHealth = GetComponent<UnitHealth>();
 
-        TargetManager.Instance.RegisterToManager(_unitHealth);
+        //TargetManager.Instance.RegisterToManager(_unitHealth);
 
         _unitHealth.OnDeath += () =>
         {

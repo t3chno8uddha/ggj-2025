@@ -372,7 +372,7 @@ MonoBehaviour:
   - prefab: {fileID: 1572133139717420088, guid: f49b0bbe454a37c4cb1550b36113acab,
       type: 3}
     spawnChance: 0.3
-  enemiesPerWave: 15
+  enemiesPerWave: 30
   increaseBy: 2
   spawnDelay: 0.5
   SpawnPoints:
@@ -387,8 +387,8 @@ MonoBehaviour:
   - {fileID: 8060097623666755733}
   - {fileID: 5569863644470967397}
   - {fileID: 6998803386997508108}
-  jumpPower: 10
-  jumpDuration: 4
+  jumpPower: 120
+  jumpDuration: 8
 --- !u!1 &8212131530419248014
 GameObject:
   m_ObjectHideFlags: 0

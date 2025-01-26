@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6867564642743722279}
   - component: {fileID: 8781801609312509207}
   - component: {fileID: 3433985276469334758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pf_building_a
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.5, y: 8.108196, z: 10.5}
+  m_Size: {x: 15, y: 8.108196, z: 12}
   m_Center: {x: 0.0108754635, y: 4.054097, z: -0.0000009536743}
 --- !u!208 &3433985276469334758
 NavMeshObstacle:
@@ -116,7 +116,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 6.4570003, y: 4.0540004, z: 4.914}
+  m_Extents: {x: 7.5, y: 4.0540004, z: 6}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
