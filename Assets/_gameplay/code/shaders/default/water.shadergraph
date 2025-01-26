@@ -149,6 +149,12 @@
         },
         {
             "m_Id": "bebbdab24c9d4bd4b42862c1f0c20147"
+        },
+        {
+            "m_Id": "dad0dc7984c943f8aff9cacbd5ee34b9"
+        },
+        {
+            "m_Id": "4a06f0c8139e43ec93315d7d34d06572"
         }
     ],
     "m_GroupDatas": [],
@@ -633,10 +639,10 @@
                 "m_Id": "45bfa35094f84a21a01450371443fa90"
             },
             {
-                "m_Id": "5ee5db643a614b1c8410a24f33a41e42"
+                "m_Id": "e27a278c62424c16b1b75db254ce8bd2"
             },
             {
-                "m_Id": "e27a278c62424c16b1b75db254ce8bd2"
+                "m_Id": "5ee5db643a614b1c8410a24f33a41e42"
             },
             {
                 "m_Id": "7f762d837cfa458aa38e01e5b4895ece"
@@ -646,6 +652,12 @@
             },
             {
                 "m_Id": "6ce2520adde94af1977704e865b78b92"
+            },
+            {
+                "m_Id": "dad0dc7984c943f8aff9cacbd5ee34b9"
+            },
+            {
+                "m_Id": "4a06f0c8139e43ec93315d7d34d06572"
             }
         ]
     },
@@ -1209,7 +1221,7 @@
     "m_ObjectId": "194558e5d67047b1afc355bf32d502d8",
     "m_WorkflowMode": 1,
     "m_NormalDropOffSpace": 0,
-    "m_ClearCoat": false,
+    "m_ClearCoat": true,
     "m_BlendModePreserveSpecular": true
 }
 
@@ -1254,6 +1266,21 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "1dcf684c7e6243b98b986cc5b5639bef",
+    "m_Id": 0,
+    "m_DisplayName": "Coat Mask",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "CoatMask",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -1870,6 +1897,40 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Emission"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "4a06f0c8139e43ec93315d7d34d06572",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.CoatSmoothness",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "8e85aba5bda84dd683209ea27ebda59c"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.CoatSmoothness"
 }
 
 {
@@ -3149,6 +3210,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "8e85aba5bda84dd683209ea27ebda59c",
+    "m_Id": 0,
+    "m_DisplayName": "Coat Smoothness",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "CoatSmoothness",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 1.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "8ead53b453e3453cb4d84882aa182ab8",
     "m_Id": 2,
     "m_DisplayName": "Out",
@@ -4213,6 +4289,40 @@
     },
     "m_Labels": [],
     "m_ScreenSpaceType": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "dad0dc7984c943f8aff9cacbd5ee34b9",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.CoatMask",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "1dcf684c7e6243b98b986cc5b5639bef"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.CoatMask"
 }
 
 {
