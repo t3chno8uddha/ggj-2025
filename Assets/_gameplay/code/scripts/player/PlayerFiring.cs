@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http.Headers;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,15 +28,17 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private LayerMask _layer;
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private int activeGunIndex = 0;
+    [SerializeField] private int _activeGunIndex = 0;
     [SerializeField] private float _swapTime = 1;
     [SerializeField] private GunSetup[] _gunSteps;
+    [SerializeField] private float _chargeTime = 1f;
+    [SerializeField] private GunSetup _chargedWeaponData;
     [SerializeField] private RecoilData _recoilData;
 
     private Tweener _recoilTween;
     private bool _changingWeapons;
 
-    private GunSetup ActiveGun => _gunSteps[activeGunIndex];
+    private GunSetup ActiveGun => _gunSteps[_activeGunIndex];
     void Update()
     {
         ChangeWeapons();
@@ -55,11 +58,11 @@ public class PlayerFiring : MonoBehaviour
             {
                 ActiveGun.GunObject.SetActive(false);
 
-                activeGunIndex++;
+                _activeGunIndex++;
 
-                if (activeGunIndex > _gunSteps.Length - 1)
+                if (_activeGunIndex > _gunSteps.Length - 1)
                 {
-                    activeGunIndex = 0;
+                    _activeGunIndex = 0;
                 }
 
                 ActiveGun.GunObject.SetActive(true);
@@ -72,9 +75,21 @@ public class PlayerFiring : MonoBehaviour
         }
     }
 
+    float _chargeTimer;
+
     void Fire()
     {
         if (_changingWeapons) return;
+
+        if (Input.GetMouseButton(0))
+        {
+            _chargeTimer += Time.deltaTime;
+
+            if (_chargeTimer >= _chargeTime)
+            {
+                Debug.Log("Charge");
+            }
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -84,13 +99,15 @@ public class PlayerFiring : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance, _layer))
             {
                 Vector3 worldPosition = hit.point;
-                ShootProjectile(worldPosition, ActiveGun);
+                ShootProjectile(worldPosition, _activeGunIndex == 0 && _chargeTimer >= _chargeTime ? _chargedWeaponData : ActiveGun);
             }
             else
             {
                 Vector3 fallbackPosition = ray.origin + ray.direction * _rayDistance;
-                ShootProjectile(fallbackPosition, ActiveGun);
+                ShootProjectile(fallbackPosition, _activeGunIndex == 0 && _chargeTimer >= _chargeTime ? _chargedWeaponData : ActiveGun);
             }
+
+            _chargeTimer = 0;
         }
     }
 

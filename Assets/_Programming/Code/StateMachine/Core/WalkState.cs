@@ -37,17 +37,7 @@ namespace ProjectGZA
                 if (hit.transform != closestEnemy.transform)
                 {
                     _agent.stoppingDistance = 0;
-
-                    Debug.Log("Vnaxe eg ar aris");
                 }
-                else
-                {
-                    Debug.Log("Es Vistanaa");
-                }
-            }
-            else
-            {
-                Debug.Log("Racxa ver vnaxe");
             }
 
             _agent.SetDestination(closestEnemy.transform.position);
