@@ -17,7 +17,7 @@ public class EnemyRenderer : MonoBehaviour
     {
         matPropBlock = new MaterialPropertyBlock();
         if (!enemyRenderer) enemyRenderer = GetComponent<Renderer>();
-    
+
         unit.OnDamageReceived += Hit;
     }
 
@@ -30,7 +30,7 @@ public class EnemyRenderer : MonoBehaviour
 
         angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
 
-        if (angle > 135  || angle < -135) { matPropBlock.SetFloat("Facing", 0); }
+        if (angle > 135 || angle < -135) { matPropBlock.SetFloat("Facing", 0); }
         if (angle > -135 && angle < -45) { matPropBlock.SetFloat("Facing", -0.25f); }
         if (angle > -45 && angle < 45) { matPropBlock.SetFloat("Facing", -0.5f); }
         if (angle > 45 && angle < 135) { matPropBlock.SetFloat("Facing", -0.75f); }
@@ -43,16 +43,16 @@ public class EnemyRenderer : MonoBehaviour
         float hitValue = 0;
 
         // Tween hitValue from 0 to 1
-        DOTween.To(() => hitValue, x => 
+        DOTween.To(() => hitValue, x =>
         {
             hitValue = x;
             matPropBlock.SetFloat("_Hit", hitValue);
             enemyRenderer.SetPropertyBlock(matPropBlock);
         }, 1f, 0.2f) // Adjust duration (0.5f) as needed
-        .OnComplete(() => 
+        .OnComplete(() =>
         {
             // Optionally, tween it back to 0 after reaching 1
-            DOTween.To(() => hitValue, x => 
+            DOTween.To(() => hitValue, x =>
             {
                 hitValue = x;
                 matPropBlock.SetFloat("_Hit", hitValue);

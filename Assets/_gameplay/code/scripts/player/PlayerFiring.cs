@@ -75,16 +75,21 @@ public class PlayerFiring : MonoBehaviour
         {
             // Tween the "_Hit" property from its current value to 1 over 0.5 seconds
             DOTween.To(
-                () => mat.GetFloat("_Hit"), 
-                value => mat.SetFloat("_Hit", value), 
+                () => mat.GetFloat("_Hit"),
+                value => mat.SetFloat("_Hit", value),
                 1f, // Target value
-                0.5f // Duration in seconds
-            ).SetEase(Ease.OutQuad);
+                0.2f // Duration in seconds
+            ).SetEase(Ease.OutQuad).OnComplete(ResetHit);
         }
         else
         {
             Debug.LogWarning("Material is null or does not have a '_Hit' property.");
         }
+    }
+
+    void ResetHit()
+    {
+        mat.SetFloat("_Hit", 0);
     }
 
     void Update()
