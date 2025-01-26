@@ -84,11 +84,6 @@ public class PlayerFiring : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _chargeTimer += Time.deltaTime;
-
-            if (_chargeTimer >= _chargeTime)
-            {
-                Debug.Log("Charge");
-            }
         }
 
         if (Input.GetMouseButtonUp(0))
