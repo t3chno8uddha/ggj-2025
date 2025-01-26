@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping;
 
     [SerializeField] Transform camParent;
-    [SerializeField] float tiltSmoothness = 10, tiltStrength = 5;
+    float tiltSmoothness = 10, tiltStrength = 5;
     float tilt = 0f;
 
     void Start()
