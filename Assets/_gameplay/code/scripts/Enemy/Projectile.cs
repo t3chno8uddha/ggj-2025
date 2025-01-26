@@ -23,13 +23,7 @@ public class Projectile : MonoBehaviour
         if (renderers.Length > 1)
         {
             int randomRenderer = Random.Range(0, renderers.Length);
-            foreach (var _renderer in renderers)
-            {
-                if (_renderer != renderers[randomRenderer])
-                {
-                    _renderer.SetActive(false);
-                }
-            }
+            renderers[randomRenderer].SetActive(true);
         }
     }
 
