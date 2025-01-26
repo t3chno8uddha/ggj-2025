@@ -16,6 +16,23 @@ public class Projectile : MonoBehaviour
 
     protected float _checkThreshhold = 0.1f;
 
+    [SerializeField] GameObject[] renderers;
+
+    void Start()
+    {
+        if (renderers.Length > 1)
+        {
+            int randomRenderer = Random.Range(0, renderers.Length);
+            foreach (var _renderer in renderers)
+            {
+                if (_renderer != renderers[randomRenderer])
+                {
+                    _renderer.SetActive(false);
+                }
+            }
+        }
+    }
+
     private void Update()
     {
         var shiftedPosition = Vector3.MoveTowards(transform.position, _targetPosition, _projectileSpeed);
