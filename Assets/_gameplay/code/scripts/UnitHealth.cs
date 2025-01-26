@@ -17,8 +17,14 @@ public class UnitHealth : MonoBehaviour, IDamagable
     public event Action OnDeath;
     public event Action OnReset;
 
+    public AudioData audioHitData;
+    public AudioData audioDeathData;
+
+    private AudioSource _audioSource;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _currentHealth = _health;
     }
 
@@ -30,10 +36,12 @@ public class UnitHealth : MonoBehaviour, IDamagable
 
         if (_currentHealth > 0)
         {
+            audioHitData.PlaySound(_audioSource);
             OnDamageReceived?.Invoke();
         }
         else
         {
+            audioDeathData.PlaySound(_audioSource);
             _isDead = true;
             OnDeath?.Invoke();
         }
