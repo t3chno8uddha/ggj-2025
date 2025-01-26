@@ -373,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   enemyRenderer: {fileID: 2064056240625951155}
+  unit: {fileID: 8102291872446310590}
 --- !u!95 &276612881465944221
 Animator:
   serializedVersion: 5

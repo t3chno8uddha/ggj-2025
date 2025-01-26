@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyRenderer : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class EnemyRenderer : MonoBehaviour
     MaterialPropertyBlock matPropBlock;
     [SerializeField] Renderer enemyRenderer;
 
+    [SerializeField] UnitHealth unit;
+
     void Start()
     {
         matPropBlock = new MaterialPropertyBlock();
         if (!enemyRenderer) enemyRenderer = GetComponent<Renderer>();
+    
+        unit.OnDamageReceived += Hit;
     }
 
     void Update()
@@ -31,5 +36,28 @@ public class EnemyRenderer : MonoBehaviour
         if (angle > 45 && angle < 135) { matPropBlock.SetFloat("Facing", -0.75f); }
 
         enemyRenderer.SetPropertyBlock(matPropBlock);
+    }
+
+    public void Hit()
+    {
+        float hitValue = 0;
+
+        // Tween hitValue from 0 to 1
+        DOTween.To(() => hitValue, x => 
+        {
+            hitValue = x;
+            matPropBlock.SetFloat("_Hit", hitValue);
+            enemyRenderer.SetPropertyBlock(matPropBlock);
+        }, 1f, 0.2f) // Adjust duration (0.5f) as needed
+        .OnComplete(() => 
+        {
+            // Optionally, tween it back to 0 after reaching 1
+            DOTween.To(() => hitValue, x => 
+            {
+                hitValue = x;
+                matPropBlock.SetFloat("_Hit", hitValue);
+                enemyRenderer.SetPropertyBlock(matPropBlock);
+            }, 0f, 0.5f); // Adjust duration as needed
+        });
     }
 }
