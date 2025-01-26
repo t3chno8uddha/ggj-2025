@@ -221,8 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 3
-  cameraTiltAngle: 10
-  tiltSpeed: 5
   moveDirection: {x: 0, y: 0, z: 0}
   stats:
   - _health: 3
@@ -231,6 +229,7 @@ MonoBehaviour:
     playerJumpHeight: 12
     gravity: 50
   statIndex: 0
+  camParent: {fileID: 5418618360383474991}
 --- !u!114 &2981836728236290992
 MonoBehaviour:
   m_ObjectHideFlags: 0

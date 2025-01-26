@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera and Mouse")]
     public float mouseSensitivity = 2.0f;
     float rotationX = 0;
-    public float cameraTiltAngle = 10f; // Maximum tilt angle
-    public float tiltSpeed = 5f; // Speed at which the camera tilts
 
     [Header("Movement")]
     [SerializeField] Vector3 moveDirection;
@@ -22,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     float verticalVelocity;
     bool isJumping;
+
+    [SerializeField] Transform camParent;
+    [SerializeField] float tiltSmoothness = 10, tiltStrength = 5;
+    float tilt = 0f;
 
     void Start()
     {
@@ -44,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         if (characterController.isGrounded)
         {
             if (isJumping) { isJumping = false; }
-            if (Input.GetKeyDown(KeyCode.Space)) { Jump(); }
+            if ( Input.GetKeyDown(KeyCode.Space)) { Jump(); }
         }
         else if (!isJumping)
         {
@@ -56,9 +58,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the character controller
         characterController.Move(moveDir * Time.deltaTime);
-
-        // Handle camera tilt
-        HandleCameraTilt(moveDir);
     }
 
     Vector3 MoveDirection()
@@ -78,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection.x = desiredMoveDirection.x * currentSpeed;
         moveDirection.z = desiredMoveDirection.z * currentSpeed;
+
+        tilt = Mathf.Lerp(tilt, horizontal * -tiltStrength, tiltSmoothness * Time.deltaTime);
+
+        camParent.localEulerAngles = new Vector3(camParent.localEulerAngles.x, camParent.localEulerAngles.y, tilt);        
 
         return moveDirection;
     }
@@ -101,22 +104,6 @@ public class PlayerMovement : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
 
         Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-    }
-
-    void HandleCameraTilt(Vector3 moveDir)
-    {
-        // Calculate tilt based on movement direction
-        float tilt = 0;
-        if (moveDir.x > 0) tilt = -cameraTiltAngle; // Tilts left when moving right
-        else if (moveDir.x < 0) tilt = cameraTiltAngle; // Tilts right when moving left
-
-        // Smoothly interpolate to the target tilt angle
-        Quaternion targetRotation = Quaternion.Euler(rotationX, 0, tilt);
-        Camera.main.transform.localRotation = Quaternion.Slerp(
-            Camera.main.transform.localRotation, 
-            targetRotation, 
-            Time.deltaTime * tiltSpeed
-        );
     }
 }
 
