@@ -50,8 +50,6 @@ namespace ProjectGZA
                     _agent.stoppingDistance = 1f;
 
                     _unitVision.CanSee = false;
-
-                    Debug.Log("Sxva Aris");
                 }
                 else
                 {
@@ -62,7 +60,6 @@ namespace ProjectGZA
             else
             {
                 _unitVision.CanSee = false;
-                Debug.Log("Ar Aris");
             }
 
             _agent.SetDestination(closestEnemy.transform.position);

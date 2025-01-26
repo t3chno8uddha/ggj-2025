@@ -1,6 +1,5 @@
 using ProjectGZA;
 using ProjectGZA.StateMachine;
-
 public class EnemyRunner : Enemy
 {
     protected override void InitializeStateMachine()

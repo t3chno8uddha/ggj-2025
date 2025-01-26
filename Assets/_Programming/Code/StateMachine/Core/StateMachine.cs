@@ -95,7 +95,7 @@ namespace ProjectGZA.StateMachine
 
                 _nodes.Add(state.GetType(), node);
 
-                Debug.Log($"New State Created: {state.GetType()}");
+                //Debug.Log($"New State Created: {state.GetType()}");
             }
 
             return node;

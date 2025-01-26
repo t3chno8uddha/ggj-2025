@@ -368,10 +368,13 @@ MonoBehaviour:
   enemies:
   - prefab: {fileID: 8102291872446310590, guid: 21bf70db437adb94fa8b8e157acc55de,
       type: 3}
-    spawnChance: 0.7
+    spawnChance: 0.4
   - prefab: {fileID: 1572133139717420088, guid: f49b0bbe454a37c4cb1550b36113acab,
       type: 3}
     spawnChance: 0.3
+  - prefab: {fileID: 2153245650642330024, guid: edba7f1d9127d404db59949fc31ab7bd,
+      type: 3}
+    spawnChance: 0.05
   enemiesPerWave: 30
   increaseBy: 2
   spawnDelay: 0.5
