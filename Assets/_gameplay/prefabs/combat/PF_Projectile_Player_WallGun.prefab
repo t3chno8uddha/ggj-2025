@@ -51,6 +51,7 @@ MonoBehaviour:
   _checkTargetType: 2
   _particle: {fileID: 2611811973229243819, guid: 3fbe97f36564abc0086094132912e642,
     type: 3}
+  renderers: []
   _wallPrefab: {fileID: 8578943043802570824, guid: ed713e783f83b9d449142d1f737eeb63,
     type: 3}
 --- !u!135 &3279055026144813906
@@ -68,7 +69,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
