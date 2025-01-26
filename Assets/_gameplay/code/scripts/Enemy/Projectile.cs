@@ -4,6 +4,7 @@ public enum TargetType
 {
     Enemy, MainTarget, Obstacle
 }
+
 public class Projectile : MonoBehaviour
 {
     [SerializeField] protected float _projectileSpeed = 10f;
