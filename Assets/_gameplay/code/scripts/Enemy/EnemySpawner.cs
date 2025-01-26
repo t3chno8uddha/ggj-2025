@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     public float jumpPower = 10;
     public float jumpDuration = 4;
 
-    private List<UnitHealth> activeEnemies = new();
+    [SerializeField] private List<UnitHealth> activeEnemies = new();
     private bool waveActive = false;
 
     void Start()
