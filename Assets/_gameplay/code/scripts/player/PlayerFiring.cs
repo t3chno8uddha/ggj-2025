@@ -36,8 +36,6 @@ public class PlayerFiring : MonoBehaviour
     private bool _changingWeapons;
 
     private GunSetup ActiveGun => _gunSteps[activeGunIndex];
-    bool isFiring = false;
-    float fireTime;
     void Update()
     {
         ChangeWeapons();
@@ -131,10 +129,5 @@ public class PlayerFiring : MonoBehaviour
         {
             _recoilTween = _weaponParent.DOLocalMoveZ(0, _recoilData.RecoilDuration);
         });
-    }
-
-    private void ChangeWeapon()
-    {
-
     }
 }

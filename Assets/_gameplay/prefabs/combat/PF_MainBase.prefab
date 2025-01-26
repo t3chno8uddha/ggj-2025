@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2576184622422012623}
   - component: {fileID: 5490467701485574783}
   - component: {fileID: 7072681198860210136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PF_MainBase
   m_TagString: MainTarget
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a348084a0fcac47b111503d7ce808a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 500
+  _health: 999999
   _isDead: 0
   _targetSize: 20
 --- !u!1 &5923900887084168478
