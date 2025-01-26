@@ -28,9 +28,9 @@ public class AudioData
 {
     public AudioClip[] clips;
 
-    public void PlaySound(AudioSource audioSource)
+    public void PlaySound()
     {
-        audioSource.PlayOneShot(clips.Random());
+        AudioManager.Instance.AudioSource.PlayOneShot(clips.Random());
     }
 }
 
@@ -129,7 +129,7 @@ public class PlayerFiring : MonoBehaviour
 
     private void ShootProjectile(Vector3 targetPosition, GunSetup gunData)
     {
-        _gunAudioData.PlaySound(_audioSource);
+        _gunAudioData.PlaySound();
 
         Recoil();
 

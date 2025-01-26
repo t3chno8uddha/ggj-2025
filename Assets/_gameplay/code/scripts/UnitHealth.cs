@@ -36,12 +36,12 @@ public class UnitHealth : MonoBehaviour, IDamagable
 
         if (_currentHealth > 0)
         {
-            audioHitData.PlaySound(_audioSource);
+            audioHitData.PlaySound();
             OnDamageReceived?.Invoke();
         }
         else
         {
-            audioDeathData.PlaySound(_audioSource);
+            audioDeathData.PlaySound();
             _isDead = true;
             OnDeath?.Invoke();
         }

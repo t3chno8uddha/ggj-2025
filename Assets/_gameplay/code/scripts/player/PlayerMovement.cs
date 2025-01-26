@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             if (isJumping)
             {
                 isJumping = false;
-                _landSounds.PlaySound(_audioSource);
+                _landSounds.PlaySound();
             }
             if (Input.GetKeyDown(KeyCode.Space)) { Jump(); }
         }
@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        _jumpSounds.PlaySound(_audioSource);
+        _jumpSounds.PlaySound();
         _madeLandSound = false;
         isJumping = true;
         verticalVelocity = Mathf.Sqrt(stats[statIndex].playerJumpHeight * 2f * stats[statIndex].gravity);

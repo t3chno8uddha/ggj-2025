@@ -392,6 +392,7 @@ MonoBehaviour:
   - {fileID: 6998803386997508108}
   jumpPower: 120
   jumpDuration: 8
+  activeEnemies: []
 --- !u!1 &8212131530419248014
 GameObject:
   m_ObjectHideFlags: 0
