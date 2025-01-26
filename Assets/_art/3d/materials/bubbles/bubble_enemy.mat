@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bubble_base
+  m_Name: bubble_enemy
   m_Shader: {fileID: -6465566751694194690, guid: f0ee43b27b1bdfabf876a9d9813ce1ba,
     type: 3}
   m_Parent: {fileID: 0}
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Bubble_Texture:
-        m_Texture: {fileID: 2800000, guid: 8ab560836f09eb36c8943ffd85401835, type: 3}
+        m_Texture: {fileID: 2800000, guid: 24187a343d9c31c769b8edae3fe6d0e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -121,36 +121,35 @@ Material:
     - _EnvironmentReflections: 1
     - _Float: 1
     - _Foam: 1
-    - _Fresnel: 0.75
+    - _Fresnel: 0.993
     - _Fresnel_Power: -2
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Outline_Depth: 1.42
-    - _Outline_Thickness: 0.8
+    - _Outline_Thickness: 0.48
     - _Parallax: 0.005
     - _Particle: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _Saturation: 0.5
+    - _Saturation: -0.25
     - _Scale: 0
     - _Sharpness: 0.005
-    - _Shift_Speed: 0.05
+    - _Shift_Speed: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0
     - _SrcBlend: 5
     - _SrcBlendAlpha: 1
-    - _Strength: 0.005
+    - _Strength: 0.015
     - _Surface: 1
     - _Twirl_Strength: 15
     - _Vertex_Speed: 1
     - _Vertical_Speed: -0.25
-    - _Voronoi_Density: 5
+    - _Voronoi_Density: 15
     - _Voronoi_Speed: 2.5
     - _WorkflowMode: 1
     - _ZTest: 4
@@ -162,14 +161,14 @@ Material:
     - _Color_A: {r: 0, g: 0.8083906, b: 1, a: 0}
     - _Color_B: {r: 1, g: 0.5990566, b: 0.93844426, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Foam_and_Twirl: {r: 0.25, g: 0.5, b: 0, a: 0}
+    - _Foam_and_Twirl: {r: 0, g: 0, b: 0, a: 0}
     - _Noise: {r: 4.63, g: 6.34, b: 0, a: 0}
     - _Offset: {r: 2.5, g: -2.5, b: 0, a: 0}
-    - _Outline_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Twirl: {r: 0.0625, g: 1, b: 0, a: 0}
     - _Vertex: {r: 0.1, g: 0.25, b: 0, a: 0}
-    - _Vertex_Voronoi: {r: 0.25, g: 1, b: 0.05, a: 0}
+    - _Vertex_Voronoi: {r: 0.5, g: 0.5, b: 0.1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4912799315943688662
 MonoBehaviour:
